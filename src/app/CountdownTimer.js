@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./countdownTimer.less"
 
 class CountdownTimer extends Component {
   state = {
@@ -15,18 +16,12 @@ class CountdownTimer extends Component {
     });
   };
 
-  handleFormSubmit = (e) => {
-    e.preventDefault();
-    alert(JSON.stringify(this.state));
-    this.setState({
-      restTime: +this.state.time,
-    });
-  };
-
   startTimer = (e) => {
     e.preventDefault();
+    const inputTime = this.state.time;
     this.setState({
-      restTime: +this.state.time,
+      restTime: inputTime,
+      display: inputTime + 'Seconds',
     });
     this.state.timeHandle = setInterval(this.handleTimerClick, 1000)
   }
@@ -67,8 +62,8 @@ class CountdownTimer extends Component {
               className="btn btn-primary"
             />
           </div>
-          <div className="form-group">
-            <p className="timerShow">
+          <div className="timerShow">
+            <p className="display">
               {this.state.display}
             </p>
           </div>
